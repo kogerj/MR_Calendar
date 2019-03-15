@@ -15,10 +15,16 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    private static String FILE_NAME = "example.txt";
-    
+    DateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy");
+    Date date = new Date();
+
+    private String FILE_NAME = dateFormat.format(date);
+
     EditText mEditText;
 
     @Override
@@ -39,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 int mDay = dayOfMonth;
                 FILE_NAME = new StringBuilder().append(mDay)
                         .append("-").append(mMonth + 1).append("-").append(mYear)
-                        .append(" ").toString();
+                        .toString();
                 //Toast.makeText(getApplicationContext(), selectedDate, Toast.LENGTH_LONG).show();
             }
         });
