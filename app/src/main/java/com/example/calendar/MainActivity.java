@@ -1,15 +1,13 @@
 package com.example.calendar;
 
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.example.calendar.R;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -19,11 +17,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
-
-        private static final String FILE_NAME = "example.txt";
-
-        EditText mEditText;
-
+    private static String FILE_NAME = "example.txt";
+    
+    EditText mEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +28,23 @@ public class MainActivity extends AppCompatActivity {
 
         mEditText = findViewById(R.id.edit_text);
 
+        CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView1);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year,
+                                            int month, int dayOfMonth) {
+                int mYear = year;
+                int mMonth = month;
+                int mDay = dayOfMonth;
+                FILE_NAME = new StringBuilder().append(mDay)
+                        .append("-").append(mMonth + 1).append("-").append(mYear)
+                        .append(" ").toString();
+                //Toast.makeText(getApplicationContext(), selectedDate, Toast.LENGTH_LONG).show();
+            }
+        });
     }
+
     public void save(View v) {
         String text = mEditText.getText().toString();
         FileOutputStream fos = null;
