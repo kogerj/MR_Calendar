@@ -11,20 +11,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="48dp"
-        android:text="Mark Your Dates"
+        android:layout_gravity="center"
+        android:layout_marginTop="42dp"
+        android:text="Check your day"
         android:textColor="#FFF"
         android:textSize="23sp" />
 
     <LinearLayout
-        android:background="@drawable/bg_calend"
-        android:layout_marginLeft="60dp"
         android:layout_width="300dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:background="@drawable/bg_calend">
 
         <CalendarView
             android:id="@+id/calendarView"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="350dp">
 
@@ -62,9 +63,14 @@
 
         <EditText
             android:id="@+id/edit_text"
+            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/colorPrimary" />
+            android:layout_height="160dp"
+            android:hint="Add your plans for this day..."
+            android:gravity="top"
+            android:background="@drawable/text_calend"
+            />
+" />
 
     </RelativeLayout>
 
